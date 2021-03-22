@@ -1,62 +1,53 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8"/>
-		<title>News</title>
-	</head>
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<body>
 
-		<h1> TP1 JS </h1>
+<head>
+    <meta charset="utf-8" />
+    <title>News</title>
 
-		<div class="tab">
-			<button class="tablinks" id="recAR" onclick="rech()">Article & Recherche</button>
-			<button class="tablinks" id="addAR" onclick="ajout()">Ajouter un article</button>
-		</div>
-		<div id="recherche">
-			<section id="news">
-				<h2 id="titleNews"></h2>
-				<article id="1">
-					<h3 class="title">News 1</h3>
-					<p>Ma super news 1</p>
-					<button class="viewDetail">View detail</button>
-				</article>
+    <link rel="stylesheet" href="../dist/css/style.css" />
 
-				<article id="2">
-					<h3 class="title">News 2</h3>
-					<p>Ma super news 2</p>
-					<button>View detail</button>
-				</article>
+    <script src="../dist/js/jquery.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
 
-				<article id="3">
-					<h3 class="title">News 3</h3>
-					<p>Ma super news 3</p>
-					<button>View detail</button>
-				</article>
-			</section>
-			
-		</div>
-		<div id="ajout">
-			<form id="addNewsForm">
-				<fieldset>
-				<label>Nom de la news :</label><br/>
-				<input name="titleToAdd" type="text" /><br/>
-	
-				<label>Description de la news :</label><br/>
-				<textarea name="descriptionToAdd"></textarea><br/>
-	
-				<input type="submit" name="addNewsBtn" />
-				</fieldset>
-			</form>
-		</div>
-		
-	</body>
-	
-	<script src="../dist/js/article.js"></script>
-	<script src="../dist/js/const.js"></script>
-	<script src="../dist/js/log.js"></script>
-	<script src="../dist/js/math.js"></script>
-	<script src="../dist/js/onglets.js"></script>
-	<script src="../dist/js/html.js"></script>
-	<script src="../dist/js/main.js"></script>
+<body>
+
+    <h1> TP1 JS </h1>
+
+    <div>
+        <a href="#" class='tab' data-target="#articlesSearchTab">Article & search</a>
+        <a href="#" class='tab' data-target="#addArticleTab">Add article</a>
+    </div>
+
+    <div class="onglet" id="articlesSearchTab">
+        <h3>Partie Vue JS</h3>
+
+
+
+        <section id="newsVue">
+            <h2 id="titleNewsVue">
+                {{ counter }} {{ title }} {{ description }}
+            </h2>
+
+            <news-item v-for="article in articles" v-bind:article="article" v-bind:key="article.id">
+            </news-item>
+        </section>
+    </div>
+
+    <div class="onglet d-none" id="addArticleTab">
+        <form id="addNewsForm">
+            <fieldset>
+                <label>Nom de la news :</label><br/>
+                <input name="titleToAdd" type="text" /><br/>
+                <label>Description de la news :</label><br/>
+                <textarea name="descriptionToAdd"></textarea><br/>
+                <input type="submit" name="addNewsBtn" />
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+<script src="../dist/js/app.min.js"></script>
+
 </html>
